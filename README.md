@@ -1,4 +1,4 @@
-### https://jboyle1.github.io/www.wordsmith.com/
+### https://jboyle1.github.io/wordsmith-API/
 
 ## Name of Project: Word Smith (using Javascript API)
 
