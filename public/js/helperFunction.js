@@ -23,3 +23,11 @@ const renderResponse = (res) => {
     responseField.innerHTML = `<p>You might be interested in:</p><ol>${wordList}</ol>`;
     return
 }
+
+// Renders response before it is modified
+const renderRawResponse = (res) => {
+    // Takes the first 10 words from res
+    let trimmedResponse = res.slice(0, 10);
+    // Manipulates responseField to render the unformatted response
+    responseField.innerHTML = `<text>${JSON.stringify(trimmedResponse)}</text>`;
+  }
