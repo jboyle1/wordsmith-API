@@ -8,22 +8,39 @@ const submit = document.querySelector("#submit");
 const responseField = document.querySelector("#responseField");
 
 // AJAX function
-const getSuggestions = () => {
+// const getSuggestions = () => {
+//     const wordQuery = inputField.value;
+//     const endpoint = `${url}${queryParams}${wordQuery}`;
+
+//     const xhr = new XMLHttpRequest();
+//     xhr.responseType = "json";
+
+//     xhr.onreadystatechange = () => {
+//         if (xhr.readyState === XMLHttpRequest.DONE) {
+//             renderResponse(xhr.response);
+//         }
+//     }
+
+//     xhr.open("GET", endpoint);
+//     xhr.send();
+// }
+
+// 'ASYNC-AWAIT' AJAX function
+const getSuggestions = async () => {
     const wordQuery = inputField.value;
     const endpoint = `${url}${queryParams}${wordQuery}`;
-
-    const xhr = new XMLHttpRequest();
-    xhr.responseType = "json";
-
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            renderResponse(xhr.response);
-        }
+    
+    try {
+      const response = await fetch(endpoint, {cache: 'no-cache'})
+      if (response.ok === true) {
+        const jsonResponse = await response.json()
+        renderResponse(jsonResponse)
+      }
+    } catch(error) {
+      console.log(error)
     }
-
-    xhr.open("GET", endpoint);
-    xhr.send();
-}
+    
+  }
 
 // Clear previous results and display results to webpage
 const displaySuggestions = (event) => {
